@@ -139,8 +139,12 @@ class PhotoImporter(QObject):
         self.importFinished.emit()
 
     def _openShapefile(self):
-        layer = QgsVectorLayer(
+        file_exists = os.path.isfile(self.shapePath)
+        if file_exists:
+            layer = QgsVectorLayer(
             self.shapePath, QFileInfo(self.shapePath).baseName(), 'ogr')
+        else:
+            layer = None
 
         return layer
 
