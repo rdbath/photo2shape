@@ -156,7 +156,7 @@ class Photo2ShapeDialog(BASE, WIDGET):
         QgsMessageLog.logMessage(message, 'Photo2Shape', level)
 
     def importCanceled(self, message):
-        self.iface.messageBar().pushWarning(message)
+        self.iface.messageBar().pushWarning(self.tr('Error'), message)
         self._restoreGui()
 
     def importCompleted(self):
